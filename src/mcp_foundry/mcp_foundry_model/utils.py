@@ -301,10 +301,6 @@ def deploy_inline_bicep_template(
     with tempfile.NamedTemporaryFile(suffix=".bicep") as tmp:
         Path(tmp.name).write_text(bicep_template, encoding="utf-8")
         try:
-
-
-
-
             return az(
                 "deployment",
                 "group",
@@ -317,7 +313,6 @@ def deploy_inline_bicep_template(
                 tmp.name,
             )
         except subprocess.CalledProcessError as e:
-            raise TypeError(repr(e.output))
-            logger.exception(e.output)
-            print(e.output, file=sys.stderr)
+            logger.exception(e.stderr + e.stdout)
+            # print(e.output, file=sys.stderr)
             raise
