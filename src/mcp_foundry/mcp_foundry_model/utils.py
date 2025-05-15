@@ -314,4 +314,5 @@ def deploy_inline_bicep_template(
             )
         except subprocess.CalledProcessError as e:
             logger.exception(e.output)
+            print(e.output, file=sys.stderr)
             raise
