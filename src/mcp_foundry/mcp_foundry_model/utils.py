@@ -301,6 +301,10 @@ def deploy_inline_bicep_template(
     with tempfile.NamedTemporaryFile(suffix=".bicep") as tmp:
         Path(tmp.name).write_text(bicep_template, encoding="utf-8")
         try:
+
+
+
+
             return az(
                 "deployment",
                 "group",
